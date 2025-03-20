@@ -15,7 +15,7 @@ CREATE TABLE products (
 INSERT INTO products (productName, category, leclercPrice, auchanPrice, sodexoEligible)
 VALUES ("Steak hache 250g", "Alimentation", 3.69, 2.00, TRUE);
 INSERT INTO products (productName, category, leclercPrice, auchanPrice, sodexoEligible)
-VALUES ("Feuille de chêne", "Alimentation", 0.99, 1.89, TRUE);
+VALUES ("Feuille de chene", "Alimentation", 0.99, 1.89, TRUE);
 INSERT INTO products (productName, category, leclercPrice, auchanPrice, sodexoEligible)
 VALUES ("Lait frais", "Alimentation", 1.29, 1.89, TRUE);
 INSERT INTO products (productName, category, leclercPrice, auchanPrice, sodexoEligible)

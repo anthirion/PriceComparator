@@ -20,11 +20,10 @@ app.get('/products', async (req, res) => {
         const [results, fields] = await connection.query(
           'SELECT * FROM `products`'
         );
-        console.log(results); // results contains rows returned by server
+        res.send(results); // results contains rows returned by server
       } catch (err) {
-        console.log(err);
+        res.send(err);
       }
-      res.send("Hello world!")
 })
 
 app.listen(PORT, () => {

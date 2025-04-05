@@ -1,4 +1,4 @@
-CREATE DATABASE priceComparator_ant;
+CREATE DATABASE IF NOT EXISTS priceComparator_ant;
 
 USE priceComparator_ant;
 

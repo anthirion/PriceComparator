@@ -17,10 +17,10 @@ async function connectWithRetry() {
 			// WARNING: you cannot connect remotely to a mysql database with root user
 			// Add another user for remote connection
 			const connection = await mysql.createConnection({
-				host: "dbserver",
-				user: "bob",
-				password: "hardtime",
-				database: "priceComparator_ant",
+				host: process.env.HOST,
+				user: process.env.DB_USER,
+				password: process.env.DB_PASSWORD,
+				database: process.env.DB_NAME,
 			});
 			console.log("Connected to database on port 3306");
 			return connection;

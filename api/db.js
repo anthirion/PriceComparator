@@ -1,12 +1,4 @@
-import express from "express";
 import mysql from "mysql2/promise";
-import cors from "cors";
-
-const app = express();
-const PORT = 3000;
-
-// Activate CORS for all routes
-app.use(cors());
 
 // WARNING: you should wait until all data is loaded in the database
 async function connectWithRetry() {
@@ -34,29 +26,4 @@ async function connectWithRetry() {
 	throw new Error("Impossible to connect to database");
 }
 
-app.get("/api", async (req, res) => {
-	res.send("Welcome on the API !");
-});
-
-app.get("/api/products", async (req, res) => {
-	try {
-		const connection = await connectWithRetry();
-
-		const [results, fields] = await connection.execute(
-			"SELECT * FROM `products`"
-		);
-
-		res.json(results);
-	} catch (err) {
-		// Améliorer la gestion des erreurs
-		console.error("Error in /api/products:", err);
-		res.status(500).json({
-			error: err.message,
-			stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
-		});
-	}
-});
-
-app.listen(PORT, () => {
-	console.log(`Example app listening on port ${PORT}`);
-});
+export const connection = await connectWithRetry();

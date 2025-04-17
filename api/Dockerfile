@@ -1,7 +1,8 @@
 FROM node:23-slim
 WORKDIR /app
 COPY package.json .
-COPY api.js .
+COPY routes.js .
+COPY db.js .
 RUN npm install
 EXPOSE 3000
-CMD ["node", "api.js"]
+CMD ["node", "routes.js"]

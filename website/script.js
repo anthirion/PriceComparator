@@ -1,10 +1,10 @@
 /**
  * @typedef {Object} Product
- * @property {string} productName
- * @property {string} category
- * @property {number} leclercPrice
- * @property {number} auchanPrice
- * @property {boolean} sodexoEligible
+ * @property {string} nom
+ * @property {string} categorie
+ * @property {number} prixLeclerc
+ * @property {number} prixAuchan
+ * @property {boolean} eligibleSodexo
  */
 
 /**
@@ -50,13 +50,13 @@ function fillTable(products) {
  * @param {Product} product
  */
 function fillTableRow(tableRow, product) {
-	const sodexoEligible = product.sodexoEligible ? "True" : "False";
+	const eligibleSodexo = product.eligibleSodexo ? "Oui" : "Non";
 	tableRow.innerHTML = `
-    <td>${product.productName}</td>
-	<td class="text-center">${product.category}</td>
-	<td class="text-center">${product.leclercPrice} €</td>
-	<td class="text-center">${product.auchanPrice} €</td>
-	<td class="text-center">${sodexoEligible}</td>
+    <td>${product.nom}</td>
+	<td class="text-center">${product.categorie}</td>
+	<td class="text-center">${product.prixLeclerc} €</td>
+	<td class="text-center">${product.prixAuchan} €</td>
+	<td class="text-center">${eligibleSodexo}</td>
     `;
 }
 

@@ -51,12 +51,15 @@ function fillTable(products) {
  */
 function fillTableRow(tableRow, product) {
 	const eligibleSodexo = product.eligibleSodexo ? "Oui" : "Non";
+	const cheapestRetailer =
+		product.prixAuchan < product.prixLeclerc ? "Auchan" : "Leclerc";
 	tableRow.innerHTML = `
     <td>${product.nom}</td>
 	<td class="text-center">${product.categorie}</td>
 	<td class="text-center">${product.prixLeclerc} €</td>
 	<td class="text-center">${product.prixAuchan} €</td>
 	<td class="text-center">${eligibleSodexo}</td>
+	<td class="text-center">${cheapestRetailer}</td>
     `;
 }
 

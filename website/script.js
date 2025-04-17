@@ -1,8 +1,17 @@
 /**
+ * @typedef {Object} Product
+ * @property {string} productName
+ * @property {string} category
+ * @property {number} leclercPrice
+ * @property {number} auchanPrice
+ * @property {boolean} sodexoEligible
+ */
+
+/**
  * @param {string} apiURL
  * @param {number} port
  * @param {string} endpoint
- * @returns {Promise}
+ * @returns {Promise<Product[]>}
  */
 async function fetchProductsFromDatabase(apiURL, port, endpoint) {
 	const fullURL = `${apiURL}:${port}/${endpoint}`;
@@ -23,26 +32,34 @@ async function fetchProductsFromDatabase(apiURL, port, endpoint) {
 }
 
 /**
- *
- * @param {Response} products
+ * Fill the table from the products provided by the API
+ * @param {Product[]} products
  */
 function fillTable(products) {
 	const tableBody = document.querySelector("table tbody");
+	products.forEach((product) => {
+		const tableRow = document.createElement("tr");
+		fillTableRow(tableRow, product);
+		tableBody.append(tableRow);
+	});
 }
 
 /**
  *
- * @param {Response} product
  * @param {HTMLElement} tableRow
+ * @param {Product} product
  */
-function fillLine(product, tableRow) {
+function fillTableRow(tableRow, product) {
+	const sodexoEligible = product.sodexoEligible ? "True" : "False";
 	tableRow.innerHTML = `
-    <td>${product.name}</td>
+    <td>${product.productName}</td>
+	<td class="text-center">${product.category}</td>
+	<td class="text-center">${product.leclercPrice} €</td>
+	<td class="text-center">${product.auchanPrice} €</td>
+	<td class="text-center">${sodexoEligible}</td>
     `;
 }
 
 // prettier-ignore
-const response = await fetchProductsFromDatabase("http://127.0.0.1", 8080, "api/products");
-console.log(response);
-// const products = await response.body;
-// fillTable(products);
+const products = await fetchProductsFromDatabase("http://127.0.0.1", 8080, "api/products");
+fillTable(products);

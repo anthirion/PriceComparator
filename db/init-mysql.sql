@@ -1,7 +1,7 @@
 CREATE DATABASE
-IF NOT EXISTS priceComparator_ant;
+IF NOT EXISTS priceComparator;
 
-USE priceComparator_ant;
+USE priceComparator;
 
 CREATE TABLE products
 (

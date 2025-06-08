@@ -1,14 +1,14 @@
 -- Création de la base de données (seulement si elle n'existe pas)
 IF NOT EXISTS (SELECT name
 FROM sys.databases
-WHERE name = 'priceComparator_ant')
+WHERE name = 'priceComparator')
 BEGIN
-    CREATE DATABASE priceComparator_ant;
+    CREATE DATABASE priceComparator;
 END
 GO
 
 -- Utilisation de la base de données
-USE priceComparator_ant;
+USE priceComparator;
 GO
 
 -- Création de la table products
